@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import uuid from 'react-native-uuid';
 
 export default function App() {
@@ -37,19 +37,22 @@ export default function App() {
         </View>
         <Button color='#000' title='+' onPress={addTask} />
       </View>
-      <ScrollView style={styles.scrollView}>
-        {
-          taskList.map(task => {
-            return <View key={task.id} style={styles.task}>
+      <View style={styles.taskInfo}>
+        <FlatList
+          data={taskList}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <View style={styles.task}>
               <View>
-                <Text style={styles.taskTitle}>{task.title}</Text>
-                <Text>{task.desc}</Text>
+                <Text style={styles.taskTitle}>{item.title}</Text>
+                <Text>{item.desc}</Text>
               </View>
               <Button color='#000' title='delete' onPress={handleDelete} />
             </View>
-          })
-        }
-      </ScrollView>
+          )
+          }
+        />
+      </View>
     </View>
   );
 }
@@ -60,9 +63,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    marginTop: 50,
   },
   title: {
+    marginTop: 50,
     fontSize: 24,
     fontWeight: '700',
   },
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
     borderColor: '#000',
   },
   taskInfo: {
-    width: '92%',
+    width: '90%',
     gap: 10
   },
   newTaskContainer: {
