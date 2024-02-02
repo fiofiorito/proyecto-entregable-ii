@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, Modal, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import uuid from 'react-native-uuid';
 
 export default function App() {
+  const [modalIsVisible, setModalIsVisible] = useState(false);
+  const [chosenId, setChosenId] = useState('');
   const [taskList, setTaskList] = useState([]);
   const [newTask, setNewTask] = useState({
     title: '',
@@ -21,8 +23,14 @@ export default function App() {
     setTaskList([...taskList, newTask]);
     setNewTask({ title: '', desc: '', id: '' });
   }
+
+  const handleModal = (item) => {
+    setChosenId(item.id)
+    setModalIsVisible(true)
+  }
+
   const handleDelete = () => {
-    console.log("funciona")
+    setTaskList(taskList.filter(task => task.id != chosenId))
   }
 
   return (
@@ -47,12 +55,24 @@ export default function App() {
                 <Text style={styles.taskTitle}>{item.title}</Text>
                 <Text>{item.desc}</Text>
               </View>
-              <Button color='#000' title='delete' onPress={handleDelete} />
+              <Button color='#000' title='delete' onPress={() => handleModal(item)} />
             </View>
           )
           }
         />
       </View>
+      <Modal
+        visible={modalIsVisible}>
+        <View>
+          <Text>Seguro?</Text>
+          <Button title='si' onPress={() => {
+            handleDelete()
+            setModalIsVisible(false)
+          }} />
+          <Button title='no' onPress={() => setModalIsVisible(false)} />
+        </View>
+
+      </Modal>
     </View>
   );
 }
@@ -111,5 +131,5 @@ const styles = StyleSheet.create({
   taskTitle: {
     fontWeight: '600',
     fontSize: 18
-  }
+  },
 });
