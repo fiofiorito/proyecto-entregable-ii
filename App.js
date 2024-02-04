@@ -62,14 +62,21 @@ export default function App() {
         />
       </View>
       <Modal
-        visible={modalIsVisible}>
-        <View>
-          <Text>Seguro?</Text>
-          <Button title='si' onPress={() => {
-            handleDelete()
-            setModalIsVisible(false)
-          }} />
-          <Button title='no' onPress={() => setModalIsVisible(false)} />
+        visible={modalIsVisible}
+        transparent={true}
+      >
+        <View style={styles.modalCenter}>
+          <View style={styles.modalPopUp}>
+            <Text style={styles.gralText}>Seguro?</Text>
+            <View style={styles.modalBtns}>
+              <Button title='si' onPress={() => {
+                handleDelete()
+                setModalIsVisible(false)
+              }} />
+              <Button title='no' onPress={() => setModalIsVisible(false)} />
+            </View>
+          </View>
+
         </View>
 
       </Modal>
@@ -132,4 +139,30 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 18
   },
+  modalCenter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F2F2F2',
+  },
+  modalPopUp: {
+    width: 200,
+    height: 100,
+    backgroundColor: '#E0E0E0',
+    padding: 10,
+    borderRadius: 16,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#000',
+  },
+  gralText: {
+    fontSize: 16,
+    marginVertical: 10
+  },
+  modalBtns: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-around',
+  }
 });
