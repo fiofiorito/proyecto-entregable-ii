@@ -1,14 +1,16 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, Button, Pressable, Image } from 'react-native'
 import React from 'react'
 
 const Workout = ({ item, handleModal }) => {
     return (
         <View style={styles.task}>
-            <View>
+            <View style={styles.texts}>
                 <Text style={styles.taskTitle}>{item.title}</Text>
-                <Text>{item.desc}</Text>
+                <Text style={styles.taskDesc}>{item.desc}</Text>
             </View>
-            <Button color='#000' title='delete' onPress={() => handleModal(item)} />
+            <Pressable onPress={() => handleModal(item)}>
+                <Image style={styles.img} source={require('../../images/trash-bin.png')} />
+            </Pressable>
         </View>
     )
 }
@@ -20,16 +22,38 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '100%',
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#000',
-        marginVertical: 10,
-        paddingVertical: 10,
-        paddingHorizontal: 10
+        alignItems: 'center',
+        width: '96%',
+        borderRadius: 16,
+        backgroundColor: '#A6E5F2',
+        paddingVertical: 20,
+        paddingHorizontal: 15,
+        marginVertical: 15,
+        marginHorizontal: '2%',
+        shadowColor: "#0077B6",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.9,
+        elevation: 5,
+
+    },
+    texts: {
+        gap: 7
     },
     taskTitle: {
         fontWeight: '600',
-        fontSize: 18
+        fontSize: 18,
+        color: '#03045E'
     },
+    taskDesc: {
+        color: '#03045E'
+    },
+    img: {
+        width: 28,
+        height: 28,
+
+    }
 })

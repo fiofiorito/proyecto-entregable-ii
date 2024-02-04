@@ -1,13 +1,23 @@
-import { StyleSheet, View, TextInput, Button } from 'react-native';
+import { StyleSheet, View, TextInput, Pressable, Image } from 'react-native';
 
 const AddWorkout = ({ handleTaskTitle, taskTitle, handleTaskDesc, taskDesc, addTask }) => {
     return (
         <View style={styles.newTaskContainer}>
             <View style={styles.taskInputs}>
-                <TextInput onChangeText={handleTaskTitle} style={styles.input} placeholder='New Workout' value={taskTitle} />
-                <TextInput onChangeText={handleTaskDesc} style={styles.input} placeholder='Descripcion del entrenamiento' value={taskDesc} />
+                <TextInput placeholderTextColor='#0077B6'
+                    onChangeText={handleTaskTitle}
+                    style={styles.input}
+                    placeholder='New Workout'
+                    value={taskTitle} />
+                <TextInput placeholderTextColor='#0077B6'
+                    onChangeText={handleTaskDesc}
+                    style={styles.input}
+                    placeholder='Descripcion del entrenamiento'
+                    value={taskDesc} />
             </View>
-            <Button color='#000' title='+' onPress={addTask} />
+            <Pressable onPress={addTask}>
+                <Image style={styles.img} source={require('../images/add.png')} />
+            </Pressable>
         </View>
     )
 }
@@ -21,11 +31,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#000',
+        borderRadius: 16,
+        backgroundColor: '#00B4D8',
         padding: 20,
-        marginVertical: 15
+        marginVertical: 15,
+        shadowColor: "#0077B6",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+
+        elevation: 6,
     },
     taskInputs: {
         width: '90%',
@@ -34,8 +52,11 @@ const styles = StyleSheet.create({
     input: {
         width: '95%',
         padding: 10,
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#000',
+        borderRadius: 8,
+        backgroundColor: '#CAF0F8'
     },
+    img: {
+        width: 28,
+        height: 28,
+    }
 })

@@ -74,14 +74,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F2',
+    backgroundColor: '#EDFAFD',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
   title: {
     marginTop: 50,
     fontSize: 24,
-    fontWeight: '700'
+    fontWeight: '700',
+    color: '#03045E'
   },
   historyTitleContainer: {
     width: '90%',
@@ -90,11 +91,12 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     paddingBottom: 3,
     borderStyle: 'solid',
-    borderBottomColor: '#C2C2C2',
+    borderBottomColor: '#CAF0F8',
     borderBottomWidth: 1
   },
   historyTitle: {
     fontSize: 18,
     fontWeight: '600',
+    color: '#03045E'
   }
 });

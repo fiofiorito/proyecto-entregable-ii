@@ -1,4 +1,4 @@
-import { Button, Modal, StyleSheet, Text, View } from 'react-native';
+import { Button, Modal, Pressable, StyleSheet, Text, View, Image } from 'react-native';
 
 const ModalDeleteWorkout = ({ modalIsVisible, taskSelected, handleDelete, handleModal }) => {
     return (
@@ -11,8 +11,12 @@ const ModalDeleteWorkout = ({ modalIsVisible, taskSelected, handleDelete, handle
                 <View style={styles.modalPopUp}>
                     <Text style={styles.modalTxt}>Seguro que quiere eliminar el entrenamiento {taskSelected.title}?</Text>
                     <View style={styles.modalBtnsContainer}>
-                        <Button color='#000' title='si' onPress={handleDelete} />
-                        <Button color='#000' title='no' onPress={() => handleModal([])} />
+                        <Pressable onPress={handleDelete}>
+                            <Image style={styles.img} source={require('../images/tick.png')} />
+                        </Pressable>
+                        <Pressable onPress={() => handleModal([])}>
+                            <Image style={styles.img} source={require('../images/cross-thick.png')} />
+                        </Pressable>
                     </View>
                 </View>
 
@@ -29,27 +33,42 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F2F2F2',
-        // agregar un BLUR de fondo
+        backgroundColor: '#F2FDFF',
     },
     modalPopUp: {
-        width: 200,
-        height: 100,
-        backgroundColor: '#E0E0E0',
+        width: 250,
+        height: 150,
         padding: 10,
         borderRadius: 16,
         alignItems: 'center',
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#000',
+        justifyContent: 'space-between',
+        borderRadius: 16,
+        backgroundColor: '#00B4D8',
+        padding: 20,
+        marginVertical: 15,
+        shadowColor: "#0077B6",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
     },
     modalTxt: {
-        fontSize: 16,
-        marginVertical: 10
+        fontSize: 18,
+        textAlign: 'center',
+        marginVertical: 10,
+        color: '#CAF0F8',
+        fontWeight: '500'
     },
     modalBtnsContainer: {
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'space-around',
+    },
+    img: {
+        width: 42,
+        height: 42
     }
 })

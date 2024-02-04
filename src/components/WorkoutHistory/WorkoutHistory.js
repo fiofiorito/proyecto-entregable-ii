@@ -21,6 +21,7 @@ export default WorkoutHistory
 const styles = StyleSheet.create({
     taskInfo: {
         width: '90%',
-        gap: 10
+        gap: 10,
+        alignItems: 'center',
     },
 })
