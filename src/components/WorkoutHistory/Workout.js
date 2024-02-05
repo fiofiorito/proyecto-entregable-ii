@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View, Button, Pressable, Image } from 'react-native'
+import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
 import React from 'react'
 
 const Workout = ({ item, handleModal }) => {
     return (
-        <View style={styles.task}>
+        <View style={styles.workoutContainer}>
             <View style={styles.texts}>
-                <Text style={styles.taskTitle}>{item.title}</Text>
-                <Text style={styles.taskDesc}>{item.desc}</Text>
+                <Text style={styles.workoutTitle}>{item.title}</Text>
+                <Text style={styles.workoutDesc}>{item.desc}</Text>
             </View>
             <Pressable onPress={() => handleModal(item)}>
                 <Image style={styles.img} source={require('../../images/trash-bin.png')} />
@@ -18,7 +18,7 @@ const Workout = ({ item, handleModal }) => {
 export default Workout
 
 const styles = StyleSheet.create({
-    task: {
+    workoutContainer: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -43,12 +43,12 @@ const styles = StyleSheet.create({
     texts: {
         gap: 7
     },
-    taskTitle: {
+    workoutTitle: {
         fontWeight: '600',
         fontSize: 18,
         color: '#03045E'
     },
-    taskDesc: {
+    workoutDesc: {
         color: '#03045E'
     },
     img: {

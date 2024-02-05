@@ -1,11 +1,11 @@
 import { StyleSheet, View, FlatList } from 'react-native';
 import Workout from './Workout';
 
-const WorkoutHistory = ({ taskList, handleModal }) => {
+const WorkoutHistory = ({ workoutHistory, handleModal }) => {
     return (
-        <View style={styles.taskInfo}>
+        <View style={styles.workoutHistoryContainer}>
             <FlatList
-                data={taskList}
+                data={workoutHistory}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
                     <Workout item={item} handleModal={handleModal} />
@@ -19,7 +19,7 @@ const WorkoutHistory = ({ taskList, handleModal }) => {
 export default WorkoutHistory
 
 const styles = StyleSheet.create({
-    taskInfo: {
+    workoutHistoryContainer: {
         width: '90%',
         gap: 10,
         alignItems: 'center',

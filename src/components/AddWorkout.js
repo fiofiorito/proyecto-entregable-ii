@@ -1,21 +1,21 @@
 import { StyleSheet, View, TextInput, Pressable, Image } from 'react-native';
 
-const AddWorkout = ({ handleTaskTitle, taskTitle, handleTaskDesc, taskDesc, addTask }) => {
+const AddWorkout = ({ handleworkoutTitle, workoutTitle, handleworkoutDesc, workoutDesc, addWorkout }) => {
     return (
-        <View style={styles.newTaskContainer}>
-            <View style={styles.taskInputs}>
+        <View style={styles.newWorkoutContainer}>
+            <View style={styles.workoutInputs}>
                 <TextInput placeholderTextColor='#0077B6'
-                    onChangeText={handleTaskTitle}
+                    onChangeText={handleworkoutTitle}
                     style={styles.input}
                     placeholder='New Workout'
-                    value={taskTitle} />
+                    value={workoutTitle} />
                 <TextInput placeholderTextColor='#0077B6'
-                    onChangeText={handleTaskDesc}
+                    onChangeText={handleworkoutDesc}
                     style={styles.input}
                     placeholder='Descripcion del entrenamiento'
-                    value={taskDesc} />
+                    value={workoutDesc} />
             </View>
-            <Pressable onPress={addTask}>
+            <Pressable onPress={addWorkout}>
                 <Image style={styles.img} source={require('../images/add.png')} />
             </Pressable>
         </View>
@@ -25,7 +25,7 @@ const AddWorkout = ({ handleTaskTitle, taskTitle, handleTaskDesc, taskDesc, addT
 export default AddWorkout
 
 const styles = StyleSheet.create({
-    newTaskContainer: {
+    newWorkoutContainer: {
         width: '90%',
         display: 'flex',
         flexDirection: 'row',
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 
         elevation: 6,
     },
-    taskInputs: {
+    workoutInputs: {
         width: '90%',
         gap: 10
     },

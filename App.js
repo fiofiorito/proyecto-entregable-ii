@@ -8,37 +8,36 @@ import WorkoutHistory from './src/components/WorkoutHistory/WorkoutHistory';
 
 export default function App() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
-  const [taskSelected, setTaskSelected] = useState({});
-  const [taskTitle, setTaskTitle] = useState('')
-  const [taskDesc, setTaskDesc] = useState('')
-  const [taskList, setTaskList] = useState([]);
+  const [workoutSelected, setWorkoutSelected] = useState({});
+  const [workoutTitle, setWorkoutTitle] = useState('')
+  const [workoutDesc, setWorkoutDesc] = useState('')
+  const [workoutHistory, setWorkoutHistory] = useState([]);
 
-  const handleTaskTitle = (title) => {
-    setTaskTitle(title);
+  const handleworkoutTitle = (title) => {
+    setWorkoutTitle(title);
   }
-  const handleTaskDesc = (desc) => {
-    setTaskDesc(desc)
+  const handleworkoutDesc = (desc) => {
+    setWorkoutDesc(desc)
   }
-  const addTask = () => {
-    const newTask = {
+  const addWorkout = () => {
+    const newWorkout = {
       id: uuid.v4(),
-      created: new Date().toLocaleString(),
-      title: taskTitle,
-      desc: taskDesc
+      title: workoutTitle,
+      desc: workoutDesc
     }
-    setTaskList([...taskList, newTask]);
+    setWorkoutHistory([...workoutHistory, newWorkout]);
 
-    setTaskTitle('');
-    setTaskDesc('');
+    setWorkoutTitle('');
+    setWorkoutDesc('');
   }
 
   const handleModal = (item) => {
-    setTaskSelected(item)
+    setWorkoutSelected(item)
     setModalIsVisible(!modalIsVisible);
   }
 
   const handleDelete = () => {
-    setTaskList(taskList.filter(task => task.id != taskSelected.id));
+    setWorkoutHistory(workoutHistory.filter(workout => workout.id != workoutSelected.id));
     setModalIsVisible(!modalIsVisible);
   }
 
@@ -49,19 +48,19 @@ export default function App() {
           <Text style={styles.title}>Bienvenido!</Text>
         </View>
         <AddWorkout
-          handleTaskTitle={handleTaskTitle}
-          taskTitle={taskTitle}
-          handleTaskDesc={handleTaskDesc}
-          taskDesc={taskDesc}
-          addTask={addTask}
+          handleworkoutTitle={handleworkoutTitle}
+          workoutTitle={workoutTitle}
+          handleworkoutDesc={handleworkoutDesc}
+          workoutDesc={workoutDesc}
+          addWorkout={addWorkout}
         />
         <View style={styles.historyTitleContainer}>
           <Text style={styles.historyTitle}>Historial de entrenamientos:</Text>
         </View>
-        <WorkoutHistory taskList={taskList} handleModal={handleModal} />
+        <WorkoutHistory workoutHistory={workoutHistory} handleModal={handleModal} />
         <ModalDeleteWorkout
           modalIsVisible={modalIsVisible}
-          taskSelected={taskSelected}
+          workoutSelected={workoutSelected}
           handleDelete={handleDelete}
           handleModal={handleModal}
         />

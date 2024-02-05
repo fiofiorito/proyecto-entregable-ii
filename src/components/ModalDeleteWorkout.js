@@ -1,6 +1,6 @@
-import { Button, Modal, Pressable, StyleSheet, Text, View, Image } from 'react-native';
+import { Modal, Pressable, StyleSheet, Text, View, Image } from 'react-native';
 
-const ModalDeleteWorkout = ({ modalIsVisible, taskSelected, handleDelete, handleModal }) => {
+const ModalDeleteWorkout = ({ modalIsVisible, workoutSelected, handleDelete, handleModal }) => {
     return (
         <Modal
             visible={modalIsVisible}
@@ -9,7 +9,7 @@ const ModalDeleteWorkout = ({ modalIsVisible, taskSelected, handleDelete, handle
             onRequestClose={() => handleModal([])} >
             <View style={styles.modalCenter}>
                 <View style={styles.modalPopUp}>
-                    <Text style={styles.modalTxt}>Seguro que quiere eliminar el entrenamiento {taskSelected.title}?</Text>
+                    <Text style={styles.modalTxt}>Seguro que quiere eliminar el entrenamiento {workoutSelected.title}?</Text>
                     <View style={styles.modalBtnsContainer}>
                         <Pressable onPress={handleDelete}>
                             <Image style={styles.img} source={require('../images/tick.png')} />
