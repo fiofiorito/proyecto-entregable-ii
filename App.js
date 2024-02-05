@@ -22,6 +22,7 @@ export default function App() {
   const addWorkout = () => {
     const newWorkout = {
       id: uuid.v4(),
+      date: new Date().toLocaleDateString(),
       title: workoutTitle,
       desc: workoutDesc
     }
@@ -57,7 +58,14 @@ export default function App() {
         <View style={styles.historyTitleContainer}>
           <Text style={styles.historyTitle}>Historial de entrenamientos:</Text>
         </View>
-        <WorkoutHistory workoutHistory={workoutHistory} handleModal={handleModal} />
+        {
+          workoutHistory.length === 0 && <View style={styles.emptyHistory}>
+            <Text style={styles.emptyHistoryText}>No tienes entrenamientos registrados</Text>
+          </View>
+        }
+        {
+          workoutHistory.length > 0 && <WorkoutHistory workoutHistory={workoutHistory} handleModal={handleModal} />
+        }
         <ModalDeleteWorkout
           modalIsVisible={modalIsVisible}
           workoutSelected={workoutSelected}
@@ -97,5 +105,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     color: '#03045E'
+  },
+  emptyHistory: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 150,
+
+  },
+  emptyHistoryText: {
+    color: '#00B4D8',
+    fontSize: 14
   }
 });

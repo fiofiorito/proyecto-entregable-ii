@@ -23,5 +23,7 @@ const styles = StyleSheet.create({
         width: '90%',
         gap: 10,
         alignItems: 'center',
+        flex: 1,
+        flexGrow: 1
     },
 })

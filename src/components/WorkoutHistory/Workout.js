@@ -7,6 +7,7 @@ const Workout = ({ item, handleModal }) => {
             <View style={styles.texts}>
                 <Text style={styles.workoutTitle}>{item.title}</Text>
                 <Text style={styles.workoutDesc}>{item.desc}</Text>
+                <Text style={styles.workoutDate}>{item.date}</Text>
             </View>
             <Pressable onPress={() => handleModal(item)}>
                 <Image style={styles.img} source={require('../../images/trash-bin.png')} />
@@ -50,6 +51,10 @@ const styles = StyleSheet.create({
     },
     workoutDesc: {
         color: '#03045E'
+    },
+    workoutDate: {
+        fontSize: 8,
+        color: '#0077B6'
     },
     img: {
         width: 28,
