@@ -3,7 +3,7 @@ Esta aplicacion fue desarrollada utilizando Expo Go en iOS, tiene la finalidad d
 
 ## App en funcionamiento
 Debido a las diferencias en estetica entre Andriod y iOS, me parece importante agregar un gif en el cual se pueda apreciar el estilo original de la applicacion. 
-![](https://github.com/fiofiorito/proyecto-entregable-ii/blob/main/src/images/app-on-expo-go.gif)
+![](https://github.com/fiofiorito/proyecto-entregable-ii/blob/main/src/images/app-functionality.gif)
 
 ## Wireframe
 Abajo se encuentra una imagen a modo de wireframe, de como surgio la idea.
